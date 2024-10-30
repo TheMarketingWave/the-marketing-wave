@@ -41,7 +41,7 @@ export default function About() {
         class="w-full h-full object-cover md:hidden"
       ></img>
       <img
-        src={`${imgUrlDesktop()}`}
+        src={`${imgUrlDesktop()}?w=1440`}
         class="w-full h-full object-cover hidden md:block"
       ></img>
       <h1 class="absolute w-full text-center bottom-[100px] left-0 text-3xl text-brand-orange md:text-6xl">
