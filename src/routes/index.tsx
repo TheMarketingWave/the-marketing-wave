@@ -37,11 +37,11 @@ export default function About() {
   return (
     <main class="h-screen w-screen relative">
       <img
-        src={`${imgUrlMobile()}?w=500`}
+        src={imgUrlMobile()}
         class="w-full h-full object-cover md:hidden"
       ></img>
       <img
-        src={`${imgUrlDesktop()}?w=1440`}
+        src={imgUrlDesktop()}
         class="w-full h-full object-cover hidden md:block"
       ></img>
       <h1 class="absolute w-full text-center bottom-[100px] left-0 text-3xl text-brand-orange md:text-6xl">
