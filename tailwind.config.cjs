@@ -2,7 +2,14 @@
 module.exports = {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
   theme: {
-    extend: {}
+    extend: {
+      fontFamily: {
+        montserrat: ["Montserrat"],
+      },
+      colors: {
+        "brand-orange": "#FA4415",
+      },
+    },
   },
-  plugins: []
+  plugins: [],
 };
