@@ -1,0 +1,28 @@
+@keyframes bounce-scroll-button-animation {
+  0% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes slide-in-button-animation {
+  0% {
+    transform: translateY(200px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.scroll-button-animate {
+  animation: bounce-scroll-button-animation 1s ease alternate infinite;
+}
+
+.scroll-button-slide-animate {
+  transform: translateY(200px);
+  animation: slide-in-button-animation 0.5s 2s ease forwards;
+}

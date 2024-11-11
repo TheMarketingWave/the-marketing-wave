@@ -1,0 +1,52 @@
+@keyframes slogan-animation-roll {
+  0% {
+    transform: translateY(0px);
+  }
+
+  15% {
+    transform: translateY(-25%);
+  }
+
+  25% {
+    transform: translateY(-25%);
+  }
+
+  40% {
+    transform: translateY(-50%);
+  }
+
+  50% {
+    transform: translateY(-50%);
+  }
+
+  65% {
+    transform: translateY(-75%);
+  }
+
+  75% {
+    transform: translateY(-75%);
+  }
+
+  100% {
+    transform: translateY(-75%);
+  }
+}
+
+@keyframes slide-in-slogan {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.slogan-animate-roll {
+  animation: slogan-animation-roll 5s 3s forwards infinite;
+}
+
+.slogan-slide-in {
+  transform: translateX(-120%);
+  animation: slide-in-slogan 0.5s 1.5s ease forwards;
+}
