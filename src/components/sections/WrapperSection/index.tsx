@@ -3,7 +3,7 @@ import { ServiceSection } from "../Services";
 import clsx from "clsx";
 
 export const WrapperSection = () => {
-  const [show, setShow] = createSignal(false);
+  const [show, setShow] = createSignal(true);
 
   const init = () => {
     setTimeout(() => {

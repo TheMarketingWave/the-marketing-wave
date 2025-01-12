@@ -1,5 +1,5 @@
 "use server";
-
+import { cache } from "@solidjs/router";
 import { createContentoClient } from "@gocontento/client";
 
 const apiKey = process.env.API_KEY ?? "";
@@ -7,9 +7,11 @@ const apiKey = process.env.API_KEY ?? "";
 const contentApi = createContentoClient({
   apiURL: "https://app.contento.io/api/v1",
   apiKey,
-  siteId: "s_01jbc9RybqxX3wSXsXT9jBNvVs",
+  siteId: "s_01JcNqtcfRKHbFR892mjwTxdbj",
   isPreview: false,
 });
 
-export const getTitleApi = () =>
-  contentApi.getContentById("c_01Jbc9RycXHFmkfy17fS231W8b");
+export const getAgencyServices = cache(
+  () => contentApi.getContentById("c_01jCNR91zv4MAbEftpTNjzCDv9"),
+  "agency-services"
+);

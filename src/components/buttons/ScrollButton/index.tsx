@@ -11,7 +11,10 @@ export const ScrollButton = () => {
           <BasicButton
             onClick={() => {
               console.log("click");
-              window.scroll({ top: window.innerHeight, behavior: "smooth" });
+              window.scroll({
+                top: window.innerHeight / 2,
+                behavior: "smooth",
+              });
             }}
           >
             <div class="flex flex-col items-center">
