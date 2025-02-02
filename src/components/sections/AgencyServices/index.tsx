@@ -5,11 +5,23 @@ import { getAgencyServices } from "~/lib/contento";
 import { ServicesImages } from "./ServicesImages";
 import clsx from "clsx";
 import { SectionTitle } from "~/components/titles/SectionTitle";
+import { ServicesDescription } from "./ServicesDesc";
 
 export const AgencyServices = () => {
   const titlesRef: HTMLHeadingElement[] = [];
   const [selectedServiceIndex, setSelectedServiceIndex] = createSignal(-1);
   const agencyServices = createAsync(() => getAgencyServices());
+
+  const getDescriptionList = () => {
+    const services = agencyServices();
+    if (services?.fields.list?.blocks) {
+      return services.fields.list.blocks.map(({ fields }: any) => {
+        return fields?.short_description?.text ?? "";
+      });
+    }
+
+    return [];
+  };
 
   const getImagesList = () => {
     const services = agencyServices();
@@ -74,7 +86,7 @@ export const AgencyServices = () => {
 
   return (
     <Show when={getImagesList()}>
-      <div class="flex flex-col bg-brand-green px-4 py-4 relative rounded-lg mt-[50px]">
+      <div class="flex flex-col bg-brand-green px-4 py-4 relative mt-[50px]">
         <SectionTitle
           text="SERVICES"
           class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[calc(100%+20px)] box-border text-shadow"
@@ -103,6 +115,10 @@ export const AgencyServices = () => {
       </div>
       <ServicesImages
         images={getImagesList()}
+        currentIndex={selectedServiceIndex()}
+      />
+      <ServicesDescription
+        description={getDescriptionList()}
         currentIndex={selectedServiceIndex()}
       />
     </Show>
