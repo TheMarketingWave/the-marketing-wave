@@ -1,7 +1,8 @@
 import { createSignal, JSX } from "solid-js";
 import clsx, { ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
 
-type Props = {
+export type Props = {
   children: JSX.Element;
   class?: ClassValue;
   onClick?: (e: MouseEvent) => void;
@@ -10,13 +11,19 @@ type Props = {
 export const BasicButton = (props: Props) => {
   const [pressed, setPressed] = createSignal(false);
 
-  return (
-    <button
-      class={clsx(
+  const mergeCssClass = () => {
+    return twMerge(
+      clsx(
         "p-3 bg-white  text-brand-orange rounded-lg",
         pressed() ? "translate-x-[4px] translate-y-[4px]" : "shadow-brand",
         props.class
-      )}
+      )
+    );
+  };
+
+  return (
+    <button
+      class={mergeCssClass()}
       onMouseDown={() => {
         setPressed(true);
       }}

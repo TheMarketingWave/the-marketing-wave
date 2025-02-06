@@ -98,7 +98,7 @@ export const AgencyServices = () => {
                 titlesRef[index()] = e;
               }}
               class={clsx(
-                "py-4",
+                "py-6",
                 "text-2xl",
                 "transition-transform",
                 selectedServiceIndex() >= 0 &&

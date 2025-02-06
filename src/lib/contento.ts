@@ -16,3 +16,8 @@ export const getAgencyServices = cache(
   () => contentApi.getContentById("c_01jCNR91zv4MAbEftpTNjzCDv9"),
   "agency-services"
 );
+
+export const getProjects = cache(
+  () => contentApi.getContentById("c_01jKdYB5c52Ar9pzkDkE255jrq"),
+  "projects"
+);
