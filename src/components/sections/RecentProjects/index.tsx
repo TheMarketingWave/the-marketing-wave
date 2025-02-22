@@ -31,10 +31,6 @@ export const RecentProjects = () => {
     return [];
   };
 
-  createEffect(() => {
-    console.log(getRecentProjects());
-  });
-
   return (
     <div class="flex flex-col mt-[80px] gap-8">
       <h3 class="text-4xl text-brand-text-dark text-center">Recent Projects</h3>

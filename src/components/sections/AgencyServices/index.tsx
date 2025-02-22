@@ -98,6 +98,7 @@ export const AgencyServices = () => {
                 titlesRef[index()] = e;
               }}
               class={clsx(
+                "text-white",
                 "py-6",
                 "text-2xl",
                 "transition-transform",

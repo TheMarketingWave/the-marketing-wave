@@ -1,3 +1,4 @@
+import { DividerBanner } from "~/components/banners/DividerBanner";
 import { AgencyServices } from "~/components/sections/AgencyServices";
 import { LandingPage } from "~/components/sections/LandingPage";
 import { RecentProjects } from "~/components/sections/RecentProjects";
@@ -14,6 +15,10 @@ export default function Home() {
       <LandingPage />
       <AgencyServices />
       <RecentProjects />
+      <DividerBanner
+        mobileImg="https://assets.contento.io/assets/s_01JcNqtcfRKHbFR892mjwTxdbj/home-team.webp"
+        mobileGraphicImg="https://assets.contento.io/assets/s_01JcNqtcfRKHbFR892mjwTxdbj/Vector.webp"
+      />
       <WrapperSection />
     </main>
   );
