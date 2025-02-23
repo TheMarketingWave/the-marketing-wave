@@ -2,7 +2,6 @@ import { DividerBanner } from "~/components/banners/DividerBanner";
 import { AgencyServices } from "~/components/sections/AgencyServices";
 import { LandingPage } from "~/components/sections/LandingPage";
 import { RecentProjects } from "~/components/sections/RecentProjects";
-import { WrapperSection } from "~/components/sections/WrapperSection";
 import { getAgencyServices } from "~/lib/contento";
 
 export const route = {
@@ -19,7 +18,6 @@ export default function Home() {
         mobileImg="https://assets.contento.io/assets/s_01JcNqtcfRKHbFR892mjwTxdbj/home-team.webp"
         mobileGraphicImg="https://assets.contento.io/assets/s_01JcNqtcfRKHbFR892mjwTxdbj/Vector.webp"
       />
-      <WrapperSection />
     </main>
   );
 }

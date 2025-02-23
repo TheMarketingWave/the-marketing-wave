@@ -4,6 +4,7 @@ import { Suspense } from "solid-js";
 
 import "./app.css";
 import { Header } from "./components/Header";
+import { Footer } from "./components/footer/Footer";
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
         <>
           <Header />
           <Suspense>{props.children}</Suspense>
+          <Footer />
         </>
       )}
     >

@@ -21,3 +21,8 @@ export const getProjects = cache(
   () => contentApi.getContentById("c_01jKdYB5c52Ar9pzkDkE255jrq"),
   "projects"
 );
+
+export const getFooterContent = cache(
+  () => contentApi.getContentById("c_01JmSC9mdvC0xN20R45x1YWw2m"),
+  "footer"
+);

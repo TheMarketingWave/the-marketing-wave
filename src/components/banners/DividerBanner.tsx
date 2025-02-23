@@ -89,7 +89,7 @@ export const DividerBanner = (props: Props) => {
   return (
     <div
       id="banner-container"
-      class="w-full flex flex-col my-24 overflow-hidden relative"
+      class="w-full flex flex-col mt-24 overflow-hidden relative"
       ref={(e) => (refContainer = e)}
     >
       <div id="top-point" ref={(e) => (topPoint = e)} />
