@@ -10,7 +10,6 @@ export const ScrollButton = () => {
         <div class="scroll-button-animate">
           <BasicButton
             onClick={() => {
-              console.log("click");
               window.scroll({
                 top: window.innerHeight / 2,
                 behavior: "smooth",

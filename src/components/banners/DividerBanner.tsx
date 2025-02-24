@@ -21,10 +21,6 @@ export const DividerBanner = (props: Props) => {
   let bottomIsIntersecting = false;
 
   const setCssImgPosition = () => {
-    console.log("topIsIntersecting", topIsIntersecting);
-    console.log("bottomIsIntersecting", bottomIsIntersecting);
-    console.log("containerIsIntersecting", containerIsIntersecting);
-
     if (topIsIntersecting && containerIsIntersecting && !bottomIsIntersecting) {
       setPosition("top");
       return;

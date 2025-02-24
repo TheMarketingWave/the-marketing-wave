@@ -21,10 +21,6 @@ export const Footer = () => {
     return null;
   });
 
-  createEffect(() => {
-    console.log(extractFooterContent());
-  });
-
   return (
     <div class="w-full overflow-hidden bg-brand-purple">
       <img
