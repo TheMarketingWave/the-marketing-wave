@@ -1,4 +1,5 @@
 import { AgencyServices } from "~/components/sections/AgencyServices";
+import { GetToKnowUs } from "~/components/sections/GetToKnowUs";
 import { LandingPage } from "~/components/sections/LandingPage";
 import { RecentProjects } from "~/components/sections/RecentProjects";
 import { WrapperSection } from "~/components/sections/WrapperSection";
@@ -14,6 +15,7 @@ export default function Home() {
       <LandingPage />
       <AgencyServices />
       <RecentProjects />
+      <GetToKnowUs />
       <WrapperSection />
     </main>
   );

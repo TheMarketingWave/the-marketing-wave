@@ -1,5 +1,12 @@
 import { createAsync } from "@solidjs/router";
-import { createSignal, For, onCleanup, onMount, Show } from "solid-js";
+import {
+  createEffect,
+  createSignal,
+  For,
+  onCleanup,
+  onMount,
+  Show,
+} from "solid-js";
 
 import { getAgencyServices } from "~/lib/contento";
 import { ServicesImages } from "./ServicesImages";
@@ -11,7 +18,9 @@ export const AgencyServices = () => {
   const titlesRef: HTMLHeadingElement[] = [];
   const [selectedServiceIndex, setSelectedServiceIndex] = createSignal(-1);
   const agencyServices = createAsync(() => getAgencyServices());
-
+  createEffect(() => {
+    console.log(agencyServices());
+  });
   const getDescriptionList = () => {
     const services = agencyServices();
     if (services?.fields.list?.blocks) {
