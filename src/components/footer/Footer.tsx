@@ -1,11 +1,15 @@
 import { createAsync } from "@solidjs/router";
-import { createEffect, createMemo, For, Show } from "solid-js";
+import { createEffect, For, Show } from "solid-js";
 import { getFooterContent } from "~/lib/contento";
 
 export const Footer = () => {
   const footerContent = createAsync(() => getFooterContent());
 
-  const extractFooterContent = createMemo(() => {
+  createEffect(() => {
+    footerContent();
+  });
+
+  const extractFooterContent = () => {
     if (footerContent()) {
       return {
         title: footerContent()?.fields?.label?.text,
@@ -19,7 +23,7 @@ export const Footer = () => {
     }
 
     return null;
-  });
+  };
 
   return (
     <div class="w-full overflow-hidden bg-brand-purple">
@@ -28,21 +32,23 @@ export const Footer = () => {
         class="w-full mt-20"
       />
       <Show when={extractFooterContent()}>
-        <div class="mt-20 flex flex-col">
-          <h3 class="text-4xl text-white w-[250px] mx-auto mb-10">
-            {extractFooterContent()?.title}
-          </h3>
-          <div class="flex flex-col gap-4 mx-auto mb-10">
-            <For each={extractFooterContent()?.list}>
-              {(item) => (
-                <div class="flex items-center gap-2">
-                  <p>{item.label}</p>
-                  <img src={item.icon} />
-                </div>
-              )}
-            </For>
+        {(content) => (
+          <div class="mt-20 flex flex-col">
+            <h3 class="text-4xl text-white w-[250px] mx-auto mb-10">
+              {content()?.title}
+            </h3>
+            <div class="flex flex-col gap-4 mx-auto mb-10">
+              <For each={content()?.list}>
+                {(item) => (
+                  <div class="flex items-center gap-2">
+                    <p>{item.label}</p>
+                    <img src={item.icon} />
+                  </div>
+                )}
+              </For>
+            </div>
           </div>
-        </div>
+        )}
       </Show>
     </div>
   );

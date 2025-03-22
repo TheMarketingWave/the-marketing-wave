@@ -2,10 +2,13 @@ import { DividerBanner } from "~/components/banners/DividerBanner";
 import { AgencyServices } from "~/components/sections/AgencyServices";
 import { LandingPage } from "~/components/sections/LandingPage";
 import { RecentProjects } from "~/components/sections/RecentProjects";
-import { getAgencyServices } from "~/lib/contento";
+import { getAgencyServices, getFooterContent } from "~/lib/contento";
 
 export const route = {
-  preload: () => getAgencyServices(),
+  preload: () => {
+    getAgencyServices();
+    getFooterContent();
+  },
 };
 
 export default function Home() {

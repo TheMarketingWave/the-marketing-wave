@@ -9,5 +9,5 @@
 
 .header-slide-in-animate {
   transform: translateY(-200px);
-  animation: header-slide-in-animation 0.5s 2s ease forwards;
+  animation: header-slide-in-animation 0.5s 1s ease forwards;
 }

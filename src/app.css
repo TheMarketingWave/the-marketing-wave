@@ -27,8 +27,8 @@
 }
 
 html,
-body {
-  overflow-x: hidden;
+body,
+#app {
   width: 100%;
 }
 

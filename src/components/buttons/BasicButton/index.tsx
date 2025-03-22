@@ -14,7 +14,7 @@ export const BasicButton = (props: Props) => {
   const mergeCssClass = () => {
     return twMerge(
       clsx(
-        "p-3 bg-white  text-brand-orange rounded-lg",
+        "p-3 bg-white  text-brand-orange rounded-lg outline-none",
         pressed() ? "translate-x-[4px] translate-y-[4px]" : "shadow-brand",
         props.class
       )

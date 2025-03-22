@@ -26,3 +26,8 @@ export const getFooterContent = cache(
   () => contentApi.getContentById("c_01JmSC9mdvC0xN20R45x1YWw2m"),
   "footer"
 );
+
+export const getTerms = cache(
+  () => contentApi.getContentById("c_01JPQKM3EjEYjRWrvHC8Za1g1p"),
+  "terms"
+);

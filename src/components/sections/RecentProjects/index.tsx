@@ -1,6 +1,5 @@
 import { createAsync } from "@solidjs/router";
-import { createEffect, createSignal, For } from "solid-js";
-import { BasicButton } from "~/components/buttons/BasicButton";
+import { For } from "solid-js";
 import { FullButton } from "~/components/buttons/FullButton";
 import { getProjects } from "~/lib/contento";
 import { Project } from "~/types";
@@ -35,9 +34,9 @@ export const RecentProjects = () => {
     <div class="flex flex-col mt-[80px] gap-8">
       <h3 class="text-4xl text-brand-text-dark text-center">Recent Projects</h3>
       <div class="flex gap-4 overflow-x-auto overflow-y-hidden hide-scroll-bar">
-        <For each={getRecentProjects()}>
+        {/* <For each={getRecentProjects()}>
           {(project, index) => <RecentProject {...project} />}
-        </For>
+        </For> */}
       </div>
 
       <FullButton class="self-center">See all projects</FullButton>
