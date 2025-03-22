@@ -71,7 +71,7 @@ export const FloatingFilter = (props: Props) => {
       <BasicButton
         class={twMerge(
           clsx(
-            "fixed right-4 bottom-4 translate-y-0 translate-x-[calc(100%+50px)] transition-transform",
+            "fixed right-4 bottom-6 translate-y-0 translate-x-[calc(100%+50px)] transition-transform",
             showList() && "-translate-y-[310px]",
             showFloatingFilterButton() && "translate-x-0"
           )
