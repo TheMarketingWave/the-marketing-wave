@@ -1,6 +1,5 @@
 "use server";
 
-import { cache } from "@solidjs/router";
 import { createContentoClient } from "@gocontento/client";
 
 const apiKey = process.env.API_KEY ?? "";
@@ -12,22 +11,19 @@ const contentApi = createContentoClient({
   isPreview: false,
 });
 
-export const getAgencyServices = cache(
-  () => contentApi.getContentById("c_01jCNR91zv4MAbEftpTNjzCDv9"),
-  "agency-services"
-);
+export const getFooterContent = () => {
+  return contentApi.getContentById("c_01JmSC9mdvC0xN20R45x1YWw2m");
+};
 
-export const getProjects = cache(
-  () => contentApi.getContentById("c_01jKdYB5c52Ar9pzkDkE255jrq"),
-  "projects"
-);
+export const getAgencyServices = () => {
+  return contentApi.getContentById("c_01jCNR91zv4MAbEftpTNjzCDv9");
+};
 
-export const getFooterContent = cache(
-  () => contentApi.getContentById("c_01JmSC9mdvC0xN20R45x1YWw2m"),
-  "footer"
-);
+export const getProjects = () => {
+  return contentApi.getContentById("c_01jKdYB5c52Ar9pzkDkE255jrq");
+};
 
-export const getTerms = cache(
-  () => contentApi.getContentById("c_01JPQKM3EjEYjRWrvHC8Za1g1p"),
-  "terms"
-);
+// export const getTerms = query(() => {
+//   // contentApi.getContentById("c_01JPQKM3EjEYjRWrvHC8Za1g1p");
+//   return Promise.resolve({});
+// }, "terms");

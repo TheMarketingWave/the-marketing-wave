@@ -1,21 +1,20 @@
 import { createAsync } from "@solidjs/router";
-import { createSignal, For, onCleanup, onMount, Show } from "solid-js";
-
-import { getAgencyServices } from "~/lib/contento";
+import { createSignal, For, onCleanup, Show, Suspense } from "solid-js";
 import { ServicesImages } from "./ServicesImages";
-import clsx from "clsx";
 import { SectionTitle } from "~/components/titles/SectionTitle";
 import { ServicesDescription } from "./ServicesDesc";
+import { getAgencyServicesApi } from "~/lib/api";
+import clsx from "clsx";
 
 export const AgencyServices = () => {
   const titlesRef: HTMLHeadingElement[] = [];
   const [selectedServiceIndex, setSelectedServiceIndex] = createSignal(-1);
-  const agencyServices = createAsync(() => getAgencyServices());
+  const agencyServices = createAsync(() => getAgencyServicesApi());
 
   const getDescriptionList = () => {
     const services = agencyServices();
-    if (services?.fields.list?.blocks) {
-      return services.fields.list.blocks.map(({ fields }: any) => {
+    if (services?.fields?.list?.blocks) {
+      return services?.fields?.list.blocks.map(({ fields }: any) => {
         return fields?.short_description?.text ?? "";
       });
     }
@@ -25,8 +24,9 @@ export const AgencyServices = () => {
 
   const getImagesList = () => {
     const services = agencyServices();
-    if (services?.fields.list?.blocks) {
-      return services.fields.list.blocks.map(({ fields }: any) => {
+
+    if (services?.fields?.list?.blocks) {
+      return services.fields?.list.blocks.map(({ fields }: any) => {
         return fields?.img?.assets?.[0]?.asset.url ?? "";
       });
     }
@@ -36,8 +36,8 @@ export const AgencyServices = () => {
 
   const getNames = () => {
     const services = agencyServices();
-    if (services?.fields.list?.blocks) {
-      return services.fields.list.blocks.map(({ name }: any) => {
+    if (services?.fields?.list?.blocks) {
+      return services.fields?.list.blocks.map(({ name }: any) => {
         return name ?? "";
       });
     }
@@ -64,7 +64,7 @@ export const AgencyServices = () => {
     }
   };
 
-  onMount(() => {
+  const initInteractions = () => {
     observer = new IntersectionObserver(handleIntersections, {
       root: null,
       rootMargin: "-40% 0px -60% 0px",
@@ -76,7 +76,7 @@ export const AgencyServices = () => {
         observer.observe(ref);
       }
     });
-  });
+  };
 
   onCleanup(() => {
     if (observer) {
@@ -85,43 +85,49 @@ export const AgencyServices = () => {
   });
 
   return (
-    <Show when={getImagesList()}>
-      <div class="flex flex-col bg-brand-green px-4 py-4 relative mt-[50px]">
-        <SectionTitle
-          text="SERVICES"
-          class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[calc(100%+20px)] box-border text-shadow"
+    <Suspense>
+      <Show when={agencyServices()}>
+        <div class="flex flex-col bg-brand-green px-4 py-4 relative mt-[50px]">
+          <SectionTitle
+            text="SERVICES"
+            class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[calc(100%+20px)] box-border text-shadow"
+          />
+          <For each={getNames()}>
+            {(item, index) => (
+              <h3
+                ref={(e) => {
+                  titlesRef[index()] = e;
+
+                  if (index() === getNames().length - 1) {
+                    initInteractions();
+                  }
+                }}
+                class={clsx(
+                  "text-white",
+                  "py-6",
+                  "text-2xl",
+                  "transition-transform",
+                  selectedServiceIndex() >= 0 &&
+                    selectedServiceIndex() === index()
+                    ? "agency-services__highlight"
+                    : null
+                )}
+                id={`services-title=${index()}`}
+              >
+                {item}
+              </h3>
+            )}
+          </For>
+        </div>
+        <ServicesImages
+          images={getImagesList()}
+          currentIndex={selectedServiceIndex()}
         />
-        <For each={getNames()}>
-          {(item, index) => (
-            <h3
-              ref={(e) => {
-                titlesRef[index()] = e;
-              }}
-              class={clsx(
-                "text-white",
-                "py-6",
-                "text-2xl",
-                "transition-transform",
-                selectedServiceIndex() >= 0 &&
-                  selectedServiceIndex() === index()
-                  ? "agency-services__highlight"
-                  : null
-              )}
-              id={`services-title=${index()}`}
-            >
-              {item}
-            </h3>
-          )}
-        </For>
-      </div>
-      <ServicesImages
-        images={getImagesList()}
-        currentIndex={selectedServiceIndex()}
-      />
-      <ServicesDescription
-        description={getDescriptionList()}
-        currentIndex={selectedServiceIndex()}
-      />
-    </Show>
+        <ServicesDescription
+          description={getDescriptionList()}
+          currentIndex={selectedServiceIndex()}
+        />
+      </Show>
+    </Suspense>
   );
 };

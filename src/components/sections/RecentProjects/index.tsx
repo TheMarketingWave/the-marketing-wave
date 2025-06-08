@@ -1,12 +1,12 @@
-import { createAsync } from "@solidjs/router";
-import { For } from "solid-js";
+import { A, createAsync } from "@solidjs/router";
+import { For, Suspense } from "solid-js";
 import { FullButton } from "~/components/buttons/FullButton";
-import { getProjects } from "~/lib/contento";
 import { Project } from "~/types";
 import { RecentProject } from "./RecentProject";
+import { getProjectsApi } from "../../../lib/api";
 
 export const RecentProjects = () => {
-  const projectsApi = createAsync(() => getProjects());
+  const projectsApi = createAsync(() => getProjectsApi());
 
   const getRecentProjects = () => {
     const content = projectsApi();
@@ -34,12 +34,16 @@ export const RecentProjects = () => {
     <div class="flex flex-col mt-[80px] gap-8">
       <h3 class="text-4xl text-brand-text-dark text-center">Recent Projects</h3>
       <div class="flex gap-4 overflow-x-auto overflow-y-hidden hide-scroll-bar">
-        <For each={getRecentProjects()}>
-          {(project, index) => <RecentProject {...project} />}
-        </For>
+        <Suspense>
+          <For each={getRecentProjects()}>
+            {(project) => <RecentProject {...project} />}
+          </For>
+        </Suspense>
       </div>
 
-      <FullButton class="self-center">See all projects</FullButton>
+      <A href="/projects" class="self-center">
+        <FullButton class="self-center">See all projects</FullButton>
+      </A>
     </div>
   );
 };

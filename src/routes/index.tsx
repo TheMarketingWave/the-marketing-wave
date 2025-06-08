@@ -2,12 +2,12 @@ import { DividerBanner } from "~/components/banners/DividerBanner";
 import { AgencyServices } from "~/components/sections/AgencyServices";
 import { LandingPage } from "~/components/sections/LandingPage";
 import { RecentProjects } from "~/components/sections/RecentProjects";
-import { getAgencyServices, getFooterContent } from "~/lib/contento";
+import { getAgencyServicesApi, getProjectsApi } from "~/lib/api";
 
 export const route = {
   preload: () => {
-    getAgencyServices();
-    getFooterContent();
+    getAgencyServicesApi();
+    getProjectsApi();
   },
 };
 
