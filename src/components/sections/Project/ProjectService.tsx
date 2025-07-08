@@ -1,10 +1,12 @@
 import clsx from "clsx";
+import { ProjectMedia } from "./ProjectMedia";
 
 export type ProjectServiceData = {
   img: string;
   title: string;
   description: string;
   img_divider: string;
+  media: string[];
 };
 
 type Props = {

@@ -1,4 +1,4 @@
-import { For } from "solid-js";
+import { createEffect, For } from "solid-js";
 import { ProjectService, ProjectServiceData } from "./ProjectService";
 
 type Props = {
@@ -6,6 +6,10 @@ type Props = {
 };
 
 export const ProjectServices = (props: Props) => {
+  createEffect(() => {
+    console.log(props.projectServices);
+  });
+
   return (
     <div class="px-5 flex flex-col gap-16 pb-2">
       <For each={props.projectServices}>

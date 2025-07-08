@@ -1,7 +1,9 @@
 import { createAsync, useParams } from "@solidjs/router";
 import { createEffect, For, Suspense } from "solid-js";
+import { ProjectMedia } from "~/components/sections/Project/ProjectMedia";
 import { ProjectServiceData } from "~/components/sections/Project/ProjectService";
 import { ProjectServices } from "~/components/sections/Project/ProjectServices";
+import { RecentProjects } from "~/components/sections/RecentProjects";
 import { getProjectsApi } from "~/lib/api";
 
 export const route = {
@@ -39,12 +41,21 @@ export default function Projects() {
         title: block?.fields?.title?.text,
         description: block?.fields?.description?.text,
         img_divider: block?.fields?.imgs?.assets?.[1]?.asset?.url,
+        media:
+          block?.fields?.project_media?.blocks?.[0]?.fields?.media?.assets?.map(
+            ({ asset }: any) => {
+              return asset?.url;
+            }
+          ),
       };
     }) as ProjectServiceData[];
 
-  createEffect(() => {
-    console.log(getProject());
-  });
+  const getProjectMedia = () =>
+    getProject()?.fields?.project_media?.blocks?.[0]?.fields?.media?.assets?.map(
+      ({ asset }: any) => {
+        return asset?.url;
+      }
+    ) as string[];
 
   return (
     <main class="w-full relative overflow-x-hidden mb-8">
@@ -69,7 +80,9 @@ export default function Projects() {
             <div class="rich_text_container" innerHTML={getContext()} />
           </div>
           <ProjectServices projectServices={getProjectServices()} />
+          <ProjectMedia imgs={getProjectMedia()} />
         </div>
+        <RecentProjects />
       </Suspense>
     </main>
   );

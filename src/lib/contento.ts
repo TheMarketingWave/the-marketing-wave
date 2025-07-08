@@ -3,6 +3,7 @@
 import { createContentoClient } from "@gocontento/client";
 
 const apiKey = process.env.API_KEY ?? "";
+console.log(apiKey);
 
 const contentApi = createContentoClient({
   apiURL: "https://app.contento.io/api/v1",

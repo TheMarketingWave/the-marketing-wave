@@ -10,6 +10,9 @@
 
   --shadow-brand: 4px 4px 0px rgba(250, 68, 21, 0.2);
   --shadow-brand-img: 8px 8px 0px rgba(250, 68, 21, 0.2);
+  --shadow-brand-pink: 10px 10px 0px 0px rgba(250, 142, 142, 0.5);
+
+  --aspect-portrait: 9 / 16;
 }
 @layer utilities {
   .brand-text-shadow {
