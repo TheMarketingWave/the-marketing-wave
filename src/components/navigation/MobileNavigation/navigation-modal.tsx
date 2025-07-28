@@ -1,10 +1,11 @@
 import { A } from "@solidjs/router";
 import clsx from "clsx";
-import { createEffect, createSignal, For } from "solid-js";
+import { For } from "solid-js";
 
 const routes = [
   { path: "/", label: "HOME" },
   { path: "/projects", label: "PROJECTS" },
+  { path: "/contact", label: "CONTACT" },
 ];
 
 export const NavModal = (props: {

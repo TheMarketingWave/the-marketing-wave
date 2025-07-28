@@ -1,0 +1,15 @@
+@keyframes blur-animation {
+  0% {
+    filter: blur(0);
+    opacity: 1;
+  }
+
+  100% {
+    filter: blur(10px);
+    opacity: 0;
+  }
+}
+
+.img-blur {
+  animation: blur-animation 1s 1s ease forwards;
+}

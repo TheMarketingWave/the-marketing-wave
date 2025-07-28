@@ -15,7 +15,10 @@ export const AgencyServices = () => {
     const services = agencyServices();
     if (services?.fields?.list?.blocks) {
       return services?.fields?.list.blocks.map(({ fields }: any) => {
-        return fields?.short_description?.text ?? "";
+        return {
+          text: fields?.short_description?.text ?? "",
+          list_link: fields?.list_link?.text ?? "",
+        };
       });
     }
 

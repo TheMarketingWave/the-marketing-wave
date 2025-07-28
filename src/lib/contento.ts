@@ -3,7 +3,6 @@
 import { createContentoClient } from "@gocontento/client";
 
 const apiKey = process.env.API_KEY ?? "";
-console.log(apiKey);
 
 const contentApi = createContentoClient({
   apiURL: "https://app.contento.io/api/v1",
@@ -24,7 +23,6 @@ export const getProjects = () => {
   return contentApi.getContentById("c_01jKdYB5c52Ar9pzkDkE255jrq");
 };
 
-// export const getTerms = query(() => {
-//   // contentApi.getContentById("c_01JPQKM3EjEYjRWrvHC8Za1g1p");
-//   return Promise.resolve({});
-// }, "terms");
+export const getTerms = () => {
+  return contentApi.getContentById("c_01JPQKM3EjEYjRWrvHC8Za1g1p");
+};
