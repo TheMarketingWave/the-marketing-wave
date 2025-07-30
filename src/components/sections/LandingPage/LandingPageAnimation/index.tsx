@@ -1,27 +1,44 @@
 import { Rive } from "@rive-app/canvas";
+import { onCleanup, onMount } from "solid-js";
 
 const LandingPageAnimation = () => {
-  const init = (canvas: HTMLCanvasElement) => {
-    const r = new Rive({
-      src: "/rive/landing-page.riv",
-      canvas,
-      autoplay: true,
-      stateMachines: "State Machine 1",
-      onLoad: () => {
-        r.resizeDrawingSurfaceToCanvas();
-        const [trigger] = r.stateMachineInputs("State Machine 1");
-        trigger.fire();
-      },
-    });
-  };
+  let canvas!: HTMLCanvasElement;
+  let rive: Rive | null = null;
+
+  onMount(() => {
+    if (canvas) {
+      const isMobile = window.innerWidth < 768;
+      const artboardName = isMobile ? "portrait" : "landscape";
+
+      rive = new Rive({
+        src: "/rive/landing-page.riv",
+        canvas,
+        autoplay: true,
+        stateMachines: "State Machine 1",
+        artboard: artboardName,
+        onLoad: () => {
+          canvas.style.visibility = "visible";
+          rive?.resizeDrawingSurfaceToCanvas();
+          const inputs = rive?.stateMachineInputs("State Machine 1");
+          if (inputs && inputs.length > 0) {
+            const trigger = inputs[0];
+            trigger.fire();
+          }
+        },
+      });
+    }
+  });
+
+  onCleanup(() => {
+    rive?.cleanup();
+  });
 
   return (
     <canvas
-      ref={(element) => {
-        init(element);
-      }}
+      ref={canvas!}
       id="landing-page-canvas"
-      class="w-full h-full absolute top-[50px] left-0"
+      class="w-full aspect-portrait md:aspect-video absolute top-[50px] left-0"
+      style="visibility:'hidden'"
     ></canvas>
   );
 };

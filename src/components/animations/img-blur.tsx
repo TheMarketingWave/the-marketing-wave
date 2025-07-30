@@ -5,38 +5,44 @@ import "./img-blur.css";
 
 type Props = {
   src: string;
+  srcLandscape?: string;
   class?: string;
+  alt?: string;
 };
 
 export const ImgBlur = (props: Props) => {
   let ref!: HTMLImageElement;
   const [animate, setAnimate] = createSignal(false);
 
-  const onLoad = () => {
-    setAnimate(true);
-  };
-
   onMount(() => {
-    if (ref.complete) {
+    const onLoad = () => {
       setAnimate(true);
+    };
+
+    if (ref.complete) {
+      onLoad();
     } else {
       ref.addEventListener("load", onLoad);
+      onCleanup(() => ref?.removeEventListener("load", onLoad));
     }
   });
 
-  onCleanup(() => {
-    ref?.removeEventListener("load", onLoad);
-  });
-
   return (
-    <img
-      ref={ref}
-      class={clsx(
-        "w-full h-full object-cover",
-        animate() && "img-blur",
-        props.class
+    <picture>
+      {props.srcLandscape && (
+        <source media="(min-width: 768px)" srcset={props.srcLandscape} />
       )}
-      src={props.src}
-    />
+
+      <img
+        ref={ref}
+        src={props.src}
+        alt={props.alt}
+        class={clsx(
+          "w-full h-full object-cover",
+          animate() && "img-blur",
+          props.class
+        )}
+      />
+    </picture>
   );
 };
