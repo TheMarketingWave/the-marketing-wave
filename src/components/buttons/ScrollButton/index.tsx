@@ -11,7 +11,7 @@ export const ScrollButton = () => {
           <BasicButton
             onClick={() => {
               window.scroll({
-                top: window.innerHeight / 2,
+                top: window.innerHeight / 2 + 110,
                 behavior: "smooth",
               });
             }}

@@ -10,8 +10,8 @@ export const ServicesImages = (props: Props) => {
   return (
     <div
       class={clsx(
-        "fixed right-[20px] bottom-[20px] w-[80%] h-[50%] rounded-2xl overflow-hidden shadow-brand-img transition-transform",
-        props.currentIndex < 0 ? "translate-x-[120%]" : "translate-x-0"
+        "fixed md:absolute right-[20px] md:left-0 bottom-[20px] w-[80%] aspect-square rounded-2xl overflow-hidden shadow-brand-img transition-transform transform-gpu",
+        props.currentIndex < 0 ? "translate-x-[120%] " : "translate-x-0 "
       )}
     >
       <For each={props.images}>

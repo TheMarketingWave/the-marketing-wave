@@ -37,7 +37,7 @@ const LandingPageAnimation = () => {
     <canvas
       ref={canvas!}
       id="landing-page-canvas"
-      class="w-full aspect-portrait md:aspect-video absolute top-[50px] left-0"
+      class="w-full aspect-portrait md:aspect-video absolute top-0 left-0"
       style="visibility:'hidden'"
     ></canvas>
   );

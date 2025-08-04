@@ -16,7 +16,7 @@ export const NavModal = (props: {
     <div
       onClick={props.onClickOutside}
       class={clsx(
-        "fixed top-0 left-0 w-full h-full glass-effect transition-transform",
+        "fixed top-0 left-0 w-full h-full glass-effect transition-transform transform-gpu",
         props.show ? "translate-x-0" : "translate-x-[100%]"
       )}
     >

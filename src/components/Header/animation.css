@@ -1,13 +1,13 @@
 @keyframes header-slide-in-animation {
   0% {
-    transform: translateY(-200px);
+    transform: translate3d(0, -200px, 0);
   }
   100% {
-    transform: translateY(0px);
+    transform: translate3d(0, 0px, 0);
   }
 }
 
 .header-slide-in-animate {
-  transform: translateY(-200px);
+  transform: translate3d(0, -200px, 0);
   animation: header-slide-in-animation 0.5s 1s ease forwards;
 }

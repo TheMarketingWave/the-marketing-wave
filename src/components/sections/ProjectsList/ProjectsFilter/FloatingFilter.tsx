@@ -45,8 +45,8 @@ export const FloatingFilter = (props: Props) => {
       <div
         class={twMerge(
           clsx(
-            "fixed right-4 bottom-4 glass-effect p-4 flex flex-col gap-1 rounded-md translate-x-[calc(100%+50px)] transition-transform",
-            showList() && "translate-x-0"
+            "fixed right-4 bottom-4 glass-effect p-4 flex flex-col gap-1 rounded-md translate-x-[calc(100%+50px)] transform-gpu transition-transform ",
+            showList() && "translate-x-0 transform-gpu"
           )
         )}
       >
@@ -71,7 +71,8 @@ export const FloatingFilter = (props: Props) => {
       <BasicButton
         class={twMerge(
           clsx(
-            "fixed right-4 bottom-6 translate-y-0 translate-x-[calc(100%+50px)] transition-transform",
+            "fixed right-4 bottom-6 transition-transform transform-gpu",
+            "translate-x-[calc(100%+50px)] translate-y-0",
             showList() && "-translate-y-[310px]",
             showFloatingFilterButton() && "translate-x-0"
           )

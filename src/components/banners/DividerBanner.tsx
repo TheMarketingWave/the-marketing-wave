@@ -89,10 +89,16 @@ export const DividerBanner = (props: Props) => {
       ref={(e) => (refContainer = e)}
     >
       <div id="top-point" ref={(e) => (topPoint = e)} />
-      <img
-        src={props.mobileImg}
-        class={clsx("w-full h-screen object-cover left-0", getCssPositions())}
-      />
+      <picture>
+        {props.desktopImg && (
+          <source media="(min-width: 768px)" srcset={props.desktopImg} />
+        )}
+
+        <img
+          src={props.mobileImg}
+          class={clsx("w-full h-screen object-cover left-0", getCssPositions())}
+        />
+      </picture>
       <div class="w-full h-screen overflow-hidden relative glass-effect">
         <img
           src={props.mobileGraphicImg}

@@ -1,44 +1,44 @@
 @keyframes slogan-animation-roll {
   0% {
-    transform: translateY(0px);
+    transform: translate3d(0, 0px, 0);
   }
 
   15% {
-    transform: translateY(-25%);
+    transform: translate3d(0, -25%, 0);
   }
 
   25% {
-    transform: translateY(-25%);
+    transform: translate3d(0, -25%, 0);
   }
 
   40% {
-    transform: translateY(-50%);
+    transform: translate3d(0, -50%, 0);
   }
 
   50% {
-    transform: translateY(-50%);
+    transform: translate3d(0, -50%, 0);
   }
 
   65% {
-    transform: translateY(-75%);
+    transform: translate3d(0, -75%, 0);
   }
 
   75% {
-    transform: translateY(-75%);
+    transform: translate3d(0, -75%, 0);
   }
 
   100% {
-    transform: translateY(-75%);
+    transform: translate3d(0, -75%, 0);
   }
 }
 
 @keyframes slide-in-slogan {
   0% {
-    transform: translateX(-120%);
+    transform: translate3d(-120%, 0, 0);
   }
 
   100% {
-    transform: translateX(0%);
+    transform: translate3d(0%, 0, 0);
   }
 }
 
@@ -47,6 +47,6 @@
 }
 
 .slogan-slide-in {
-  transform: translateX(-120%);
+  transform: translate3d(-120%, 0, 0);
   animation: slide-in-slogan 0.5s 1.5s ease forwards;
 }

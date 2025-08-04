@@ -12,8 +12,8 @@ export const ServicesDescription = (props: Props) => {
   return (
     <div
       class={clsx(
-        "fixed left-[10px]  bottom-[30px] w-[calc(100%-40px)] h-[160px] rounded-2xl overflow-hidden shadow-brand-img transition-transform glass-effect",
-        props.currentIndex < 0 ? "-translate-x-[120%]" : "translate-x-0"
+        "fixed left-[10px] bottom-[30px] w-[calc(100%-40px)] h-[160px] rounded-2xl overflow-hidden shadow-brand-img transition-transform glass-effect transform-gpu",
+        props.currentIndex < 0 ? "-translate-x-[120%] " : "translate-x-0"
       )}
     >
       <For each={props.description}>
