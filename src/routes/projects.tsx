@@ -15,9 +15,14 @@ export default function Projects() {
 
   return (
     <main class="w-full relative overflow-x-hidden mb-8">
-      <h1 class="text-brand-text-dark text-6xl pt-32 px-3 pb-4">Portofolio</h1>
       <Suspense>
-        <ProjectFilter projectsData={projects()} />
+        <div class="w-full max-w-[1000px] flex flex-col mx-auto">
+          <h1 class="text-brand-text-dark text-6xl pt-32 px-3 pb-4">
+            Portofolio
+          </h1>
+          <ProjectFilter projectsData={projects()} />
+        </div>
+
         <ProjectsList projectsData={projects()} />
       </Suspense>
     </main>

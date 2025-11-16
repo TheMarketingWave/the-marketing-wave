@@ -16,14 +16,14 @@ type Props = {
 
 export const ProjectService = (props: Props) => {
   return (
-    <div class="flex flex-col gap-8">
-      <div class="m-6">
+    <div class="flex flex-col gap-8 sm:flex-row">
+      <div class="flex-1/3">
         <img
           src={props.service.img}
           class="aspect-square w-full shadow-brand-img rounded-2xl object-cover"
         />
       </div>
-      <div class="flex flex-col gap-5">
+      <div class="flex flex-col gap-5 flex-2/3">
         <p>{props.service.title}</p>
         <div
           class="rich_text_container"
@@ -32,8 +32,7 @@ export const ProjectService = (props: Props) => {
         <img
           src={props.service.img_divider}
           class={clsx(
-            "aspect-video shadow-brand w-[150px] rounded-2xl object-cover",
-            props.index % 2 === 0 ? "ml-0" : "ml-auto"
+            "aspect-video shadow-brand w-[150px] rounded-2xl object-cover ml-auto"
           )}
         />
       </div>

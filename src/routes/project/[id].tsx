@@ -1,5 +1,5 @@
 import { createAsync, useParams } from "@solidjs/router";
-import { createEffect, For, Suspense } from "solid-js";
+import { For, Suspense } from "solid-js";
 import { ProjectMedia } from "~/components/sections/Project/ProjectMedia";
 import { ProjectServiceData } from "~/components/sections/Project/ProjectService";
 import { ProjectServices } from "~/components/sections/Project/ProjectServices";
@@ -58,32 +58,53 @@ export default function Projects() {
     ) as string[];
 
   return (
-    <main class="w-full relative overflow-x-hidden mb-8">
-      <div class="pt-32 px-3 pb-4">
-        <p class="text-brand-text-dark">PORTFOLIO</p>
-        <Suspense>
-          <h1 class="text-brand-text-dark text-6xl">{getProjectName()}</h1>
-        </Suspense>
-      </div>
+    <Suspense>
+      <main class="w-full">
+        <div class="w-full max-w-[1000px] flex flex-col mx-auto">
+          <p class="text-brand-text-dark mt-[150px] px-4">PORTFOLIO</p>
 
-      <Suspense>
-        <div class="w-full aspect-square gap-16 flex flex-col">
-          <img src={getThumbnail()} class="w-full h-full object-cover" />
-          <div class="flex flex-col px-5 ">
-            <p class="text-xs font-light">SERVICES</p>
-            <For each={getServices()}>{(service: any) => <p>{service}</p>}</For>
+          <div class="flex flex-col sm:flex-row">
+            <div class="flex-1/2">
+              <h1 class="text-brand-text-dark text-6xl p-4">
+                {getProjectName()}
+              </h1>
+              <img
+                src={getThumbnail()}
+                class="w-full h-auto object-cover aspect-square"
+              />
+            </div>
+
+            <div class="flex-1/2 flex flex-col gap-6">
+              <div class="flex flex-col px-5">
+                <p class="text-xs font-light mt-6 sm:mt-[100px]">SERVICES</p>
+                <For each={getServices()}>
+                  {(service: any) => <p>{service}</p>}
+                </For>
+              </div>
+              <div
+                class="px-5 rich_text_container"
+                innerHTML={getDescription()}
+              />
+            </div>
           </div>
-          <div class="px-5 rich_text_container" innerHTML={getDescription()} />
-          <img src={getImgDivider()} class="w-full object-cover" />
-          <div class="flex flex-col px-5 gap-3">
-            <p class="">CONTEXT</p>
-            <div class="rich_text_container" innerHTML={getContext()} />
+
+          <img src={getImgDivider()} class="w-full object-cover mt-6" />
+
+          <div class="w-full gap-8 flex flex-col">
+            <div class="flex flex-col p-4 gap-3">
+              <p class="">CONTEXT</p>
+              <div class="rich_text_container" innerHTML={getContext()} />
+            </div>
+            <ProjectServices projectServices={getProjectServices()} />
           </div>
-          <ProjectServices projectServices={getProjectServices()} />
+        </div>
+        <div class="mt-16">
           <ProjectMedia imgs={getProjectMedia()} />
         </div>
-        <RecentProjects />
-      </Suspense>
-    </main>
+        <div class="mb-16">
+          <RecentProjects />
+        </div>
+      </main>
+    </Suspense>
   );
 }

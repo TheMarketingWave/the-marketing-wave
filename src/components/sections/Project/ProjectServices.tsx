@@ -7,7 +7,7 @@ type Props = {
 
 export const ProjectServices = (props: Props) => {
   return (
-    <div class="px-5 flex flex-col gap-16 pb-2">
+    <div class="px-4 flex flex-col gap-16 mb-2">
       <For each={props.projectServices}>
         {(service, index) => (
           <ProjectService service={service} index={index()} />
